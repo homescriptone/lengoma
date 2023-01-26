@@ -1,10 +1,3 @@
-/* Template Name: Aezio - Tailwindcss Landing Page Template
-   Author: Myrathemes
-   Version: 1.0.0
-   File Description: modal Js file of the template
-*/
-
-
 //
 // Modal (Video modal JS)
 //

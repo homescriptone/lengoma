@@ -15,7 +15,8 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<section class="section py-10">
+		<div class="container">
 
 		<?php
 		if ( have_posts() ) :
@@ -49,8 +50,8 @@ get_header();
 
 		endif;
 		?>
-
-	</main><!-- #main -->
+</div>
+</section>
 
 <?php
 get_sidebar();

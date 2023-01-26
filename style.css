@@ -14,4 +14,43 @@ Text Domain: lengoma
 
 @import url('assets/css/icofont.css');
 @import url('assets/css/pe-icon-7-stroke.css');
+@import url('assets/css/swiper.css');
 @import url('assets/css/tailwind.css');
+
+img.custom-logo{
+	width: 42px;
+}
+
+
+ul li.menu-ul{
+	display: inline-block;
+	position: relative;
+	line-height: 21px;
+	text-align: left;
+}
+ul li.menu-ul a{
+	display: block;
+	color: #333;
+	text-decoration: none;
+}
+ul li.menu-ul a:hover{
+	background: rgba(64,87,109,.07);
+}
+ul li.menu-ul ul.submenu-dropdown{
+	min-width: 100%; /* Set width of the dropdown */
+	display: none;
+	position: absolute;
+	z-index: 999;
+	left: 0;
+	background: #f2f0ff;
+}
+ul li.menu-ul:hover ul.submenu-dropdown{
+	display: block;	/* Display the dropdown */
+}
+ul li.menu-ul ul.submenu-dropdown li{
+	display: block;
+}
+
+ul.submenu-dropdown{
+	display: none;
+}

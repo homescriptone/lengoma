@@ -49,7 +49,7 @@ function lengoma_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'lengoma' ),
+			'primary-menu' => esc_html__( 'Primary Menu', 'lengoma' ),
 		)
 	);
 
@@ -146,6 +146,14 @@ function lengoma_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+	wp_enqueue_script( 'lengoma-flowbite', get_template_directory_uri() . '/assets/js/flowbite.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'lengoma-gallery', get_template_directory_uri() . '/assets/js/gallery.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'lengoma-modal', get_template_directory_uri() . '/assets/js/modal.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'lengoma-swiper', get_template_directory_uri() . '/assets/js/swiper.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'lengoma-shuffle', get_template_directory_uri() . '/assets/js/shuffle.min.js', array( 'lengoma-swiper'), _S_VERSION, true );
+	wp_enqueue_script( 'lengoma-app', get_template_directory_uri() . '/assets/js/app.js', array(), _S_VERSION, true );
+	
 }
 add_action( 'wp_enqueue_scripts', 'lengoma_scripts' );
 
@@ -182,3 +190,41 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+
+function lengoma_primary_menu_callback( ) {
+	?>
+	<div id="menu" class="w-full md:w-auto h-0 transition-all ease-out duration-300 md:transition-none md:flex-grow md:flex md:items-center opacity-0 md:opacity-100">
+		<ul id="ulMenu" class="flex flex-col duration-300 ease-out sm:transition-none md:flex-row ml-auto mt-5 md:mt-0" >
+			<?php
+				wp_page_menu();
+			?>
+		</ul>
+	</div>
+	<?php
+}
+
+
+function add_classes_on_li($classes, $item, $args) {
+    $classes = array( "menu-ul" );
+    return $classes;
+}
+add_filter('nav_menu_css_class','add_classes_on_li',1,3);
+
+
+add_filter('nav_menu_item_id', function( $atts ) {
+	$atts = "";
+	return $atts;
+} );
+
+
+add_filter('nav_menu_link_attributes', function( $atts ) {
+	$atts['class'] = "lg:px-6 font-medium font-secondary block text-black/70 hover:text-blue-500 p-3 uppercase text-sm";
+	return $atts;	
+});
+
+
+add_filter('nav_menu_submenu_css_class', function( $text ) {
+	$text = array('submenu-dropdown');
+	return $text;
+});

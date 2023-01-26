@@ -30,6 +30,14 @@ function lengoma_customize_register( $wp_customize ) {
 				'render_callback' => 'lengoma_customize_partial_blogdescription',
 			)
 		);
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control( 
+				$wp_customize, 'sidebar_background', 
+				array(
+					'section' => 'colors',
+					'label'   => esc_html__( 'Sidebar Background', 'theme' ),
+		  	) ) 
+		);
 	}
 }
 add_action( 'customize_register', 'lengoma_customize_register' );

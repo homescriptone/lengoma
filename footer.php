@@ -11,8 +11,8 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
+	<footer class="border-t py-8">
+		<div class="container">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'lengoma' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. WordPress. */

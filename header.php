@@ -25,35 +25,45 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'lengoma' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$lengoma_description = get_bloginfo( 'description', 'display' );
-			if ( $lengoma_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $lengoma_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'lengoma' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+	<div class="flex flex-col">
+        <nav id="nav" class="py-8 md:border-b-0 border-b" role="navigation">
+            <div class="container flex flex-wrap items-center md:flex-no-wrap">
+                <a href="index.html" class="flex">
+                    <i class="icofont-deer-head text-black text-[42px]"></i>
+                </a>
+                <div class="ml-auto md:hidden">
+                    <button onclick="menuToggle()" class="flex items-center rounded" type="button">
+                        <i class="pe-7s-menu text-3xl"></i>
+                    </button>
+                </div>
+                <div id="menu" class="w-full md:w-auto h-0 transition-all ease-out duration-300 md:transition-none md:flex-grow md:flex md:items-center opacity-0 md:opacity-100">
+                    <ul id="ulMenu" class="flex flex-col duration-300 ease-out sm:transition-none md:flex-row ml-auto mt-5 md:mt-0">
+                        <li>
+                            <a class="lg:px-6 font-medium font-secondary block text-blue-500 p-3 uppercase text-sm"
+                                href="index.html" title="Home">Home</a>
+                        </li>
+                        <li>
+                            <a class="lg:px-6 font-medium font-secondary block text-black/70 hover:text-blue-500 p-3 uppercase text-sm"
+                                href="about.html" title="About">About</a>
+                        </li>
+                        <li>
+                            <a class="lg:px-6 font-medium font-secondary block text-black/70 hover:text-blue-500 p-3 uppercase text-sm"
+                                href="service.html" title="Service">Service</a>
+                        </li>
+                        <li>
+                            <a class="lg:px-6 font-medium font-secondary block text-black/70 hover:text-blue-500 p-3 uppercase text-sm"
+                                href="work.html" title="Work">Work</a>
+                        </li>
+                        <li>
+                            <a class="lg:px-6 font-medium font-secondary block text-black/70 hover:text-blue-500 p-3 uppercase text-sm"
+                                href="blog.html" title="Blog">Blog</a>
+                        </li>
+                        <li>
+                            <a class="lg:px-6 font-medium font-secondary block text-black/70 hover:text-blue-500 p-3 uppercase text-sm"
+                                href="contact.html" title="Contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
